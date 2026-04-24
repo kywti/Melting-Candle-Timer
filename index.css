@@ -1,0 +1,109 @@
+body {
+  background-image: url("img/background5.jpg");
+  background-size: cover;
+}
+
+#background-images {
+}
+
+#main-container {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+#app-icons {
+  display: flex;
+  flex-direction: column;
+  background-color: blueviolet;
+  width: 150px;
+  height: 900px;
+}
+
+#left-container {
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+  width: 400px;
+}
+
+#website-title {
+}
+
+#avatar-container {
+}
+
+#todo-list-container {
+}
+
+#left-text-div {
+  background-color: blanchedalmond;
+  width: 70px;
+}
+
+#right-container {
+  display: flex;
+  flex-direction: column;
+  background-color: beige;
+  width: 1200px;
+}
+
+#right-top-container {
+  display: flex;
+  background-color: darkgray;
+  width: 1200px;
+  height: 300px;
+  gap: 20px;
+}
+
+#right-top-banner {
+  display: flex;
+  background-color: darkkhaki;
+  width: 1050px;
+  height: 300px;
+  gap: 20px;
+}
+
+#right-text-div {
+  background-color: crimson;
+  height: 300px;
+  width: 130px;
+}
+
+#right-bottom-container {
+  display: flex;
+  gap: 30px;
+}
+
+#right-bottom-left-container {
+  display: flex;
+  flex-direction: column;
+  background-color: lightgreen;
+  width: 800px;
+  height: 600px;
+  gap: 30px;
+}
+
+#music-player-container {
+  background-color: darkslateblue;
+  width: 800px;
+  height: 150px;
+}
+
+#candle-container {
+  background-color: purple;
+  width: 800px;
+  height: 400px;
+}
+
+#middle-text-div {
+}
+
+#right-bottom-right-container {
+  display: flex;
+  flex-direction: column;
+  background-color: mediumseagreen;
+  width: 340px;
+  height: 600px;
+  gap: 40px;
+}
