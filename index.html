@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&family=Tiny5&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="index.css" />
     <title>Candle</title>
   </head>
@@ -8,29 +14,62 @@
     <div id="background-images"></div>
     <main>
       <div id="main-container">
+        <img id="gif1" src="img/2.gif"/>
+        <img id="gif6" src="img/6.gif">
+        <img id="gif7" src="img/7.gif">
+        <img id="gif8" src="img/8.gif">
+        <img id="gif9" src="img/9.gif">
+        <img id="gif13" src="img/13.gif">
         <div id="app-icons"></div>
         <div id="left-container">
-          <h1 id="website-title">CANDLE TIMER</h1>
-          <div id="avatar-container"></div>
-          <div id="todo-list-container"></div>
+          <div id="website-title">
+            <p>CANDLE TIMER</p>
+          </div>
+          <div id="avatar-container">
+            <img id="avatar-frame" src="img/avatar-frame.png" />
+            <img id="avatar-gif" src="img/avatar.gif">
+          </div>
+          <div id="todo-list-container">
+            <img src="img/todo-frame3.png" />
+          </div>
         </div>
-        <div id="left-text-div"></div>
+        <div id="left-text-div">
+          <p>I can't hear you</p>
+        </div>
         <div id="right-container">
           <div id="right-top-container">
-            <div id="right-top-banner"></div>
-            <div id="right-text-div"></div>
+            <div id="right-top-banner">
+              <img src="img/1.gif"/>
+              <img src="img/3.gif">
+              <img src="img/12.gif">
+            </div>
+            <div id="right-text-div">
+              <p>Are you here?</p>
+            </div>
           </div>
           <div id="right-bottom-container">
             <div id="right-bottom-left-container">
               <div id="music-player-container"></div>
-              <div id="candle-container"></div>
+              <div id="candle-container"">
+                <img src="img/candle-frame.png"/>
+                <p id="timer-label">Time elapsed:</p>
+                <p id="timer">00:00:00</p>
+                <div id="candle">
+                  <img id="candle-body" src="img/candle-1.png"/>
+                </div>
+                <button id="start-button">Start</button>
+              </div>
             </div>
             <div id="middle-text-div"></div>
-            <div id="right-bottom-right-container"></div>
+            <div id="right-bottom-right-container">
+              <img src="img/5.gif">
+              <img src="img/10.gif">
+              <img src="img/11.gif">
+            </div>
           </div>
         </div>
       </div>
     </main>
-    <script src="candle.js" defer></script>
+    <script src="index.js" defer></script>
   </body>
 </html>
