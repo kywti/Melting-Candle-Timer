@@ -1,5 +1,12 @@
-button = document.getElementById("start-button");
 candleBody = document.getElementById("candle-body");
+breakModal = document.getElementById("modal-background");
+breakLabel = document.getElementById("break-label");
+breakTimerLabel = document.getElementById("break-timer");
+let timeElapsed = document.getElementById("timer");
+
+let timerUpdateInterval;
+let frameUpdateInterval;
+
 const candleFrames = [
   "img/candle-1.png",
   "img/candle-2.png",
@@ -13,16 +20,39 @@ const candleFrames = [
   "img/candle-10.png",
 ];
 
+let counter = 0;
+
 let hh = 0,
   mm = 0,
   ss = 0;
 
-let timeElapsed = document.getElementById("timer");
+let formathh = "",
+  formatmm = "",
+  formatss = "";
+formathh = checkTimeFormat(hh, formathh);
+formatmm = checkTimeFormat(mm, formatmm);
+formatss = checkTimeFormat(ss, formatss);
 
-let timerUpdateInterval;
-let frameUpdateInterval;
+let breakmm = 10,
+  breakss = 0;
 
-let counter = 0;
+breakCloseButton = document.getElementById("break-close-button");
+
+if (breakCloseButton) {
+  breakCloseButton.addEventListener("click", () => {
+    breakModal.style.setProperty("visibility", "hidden");
+  });
+}
+
+button = document.getElementById("start-button");
+
+let formatbreakmm = "",
+  formatbreakss = "";
+formatbreakmm = checkTimeFormat(breakmm, formatbreakmm);
+formatbreakss = checkTimeFormat(breakss, formatbreakss);
+
+breakTimerLabel.innerText = formatbreakmm + ":" + formatbreakss;
+isBreakOver = false;
 
 if (button) {
   button.addEventListener("click", () => {
@@ -32,7 +62,7 @@ if (button) {
     mm = 0;
     ss = 0;
     timerUpdateInterval = setInterval(frameUpdate, 1000);
-    frameUpdateInterval = setInterval(frameUpdateIntervalFunc, 360000);
+    frameUpdateInterval = setInterval(frameUpdateIntervalFunc, 1000);
   });
 }
 
@@ -45,32 +75,46 @@ function frameUpdate() {
     clearInterval(timerUpdateInterval);
     clearInterval(frameUpdateInterval);
     console.log("Time's up!");
-    alert("Break time!");
     breakTimer();
   }
 }
 
 function breakTimer() {
+  breakModal.style.setProperty("visibility", "visible");
   button.disabled = true;
-  let breakTime = 600;
+  breakCloseButton.disabled = true;
+  let breakTime = 30;
   let breakInterval = setInterval(() => {
     console.log("break: ", breakTime);
+    manageBreakTime();
     breakTime -= 1;
-    if (breakTime == 0) {
+    if (isBreakOver) {
       clearInterval(breakInterval);
       console.log("break over!");
-      alert("Work Time!");
       button.disabled = false;
+      breakCloseButton.disabled = false;
+      breakLabel.innerText = "BREAK OVER!";
     }
   }, 1000);
 }
 
-function manageTimeElapsed() {
-  let formathh = hh.toString(),
-    formatmm = mm.toString(),
-    formatss = ss.toString();
+function manageBreakTime() {
+  if (breakss == 0) {
+    if (breakmm == 0 && breakss == 0) {
+      isBreakOver = true;
+    } else {
+      breakmm--;
+      breakss = 59;
+    }
+  } else {
+    breakss--;
+  }
+  formatbreakmm = checkTimeFormat(breakmm, formatbreakmm);
+  formatbreakss = checkTimeFormat(breakss, formatbreakss);
+  breakTimerLabel.innerText = formatbreakmm + ":" + formatbreakss;
+}
 
-  //console.log("global counter =" + globalCounter);
+function manageTimeElapsed() {
   ss++;
   if (ss == 60) {
     if (mm == 59) {
@@ -81,7 +125,19 @@ function manageTimeElapsed() {
     }
     ss = 0;
   }
+  formathh = checkTimeFormat(hh, formathh);
+  formatmm = checkTimeFormat(mm, formatmm);
+  formatss = checkTimeFormat(ss, formatss);
+
   timeElapsed.innerText = formathh + ":" + formatmm + ":" + formatss;
+}
+
+function checkTimeFormat(time, formattime) {
+  formattime = time.toString();
+  if (time < 10) {
+    formattime = "0" + formattime;
+  }
+  return formattime;
 }
 
 function frameUpdateIntervalFunc() {
