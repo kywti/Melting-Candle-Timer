@@ -62,7 +62,7 @@ if (button) {
     mm = 0;
     ss = 0;
     timerUpdateInterval = setInterval(frameUpdate, 1000);
-    frameUpdateInterval = setInterval(frameUpdateIntervalFunc, 1000);
+    frameUpdateInterval = setInterval(frameUpdateIntervalFunc, 360000);
   });
 }
 
